@@ -10,10 +10,10 @@ Moving Average Convergence / Divergence(MACD) Crossing trading
 ####################################################################
 
 Recommend Python 3.5 with libs：
-pandas
-numpy
-matplotlib
-pyalgotrade
+pandas,
+numpy,
+matplotlib,
+pyalgotrade,
 talib
 
 ####################################################################
