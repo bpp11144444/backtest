@@ -20,7 +20,7 @@ talib
 
 Data format follows applecsv.csv
 
-MACDcrossover.py can run independently
+MACDcrossover.py can run independently.
 
 sma_crossover.py and testMA.py should save in same path.
 
