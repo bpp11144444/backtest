@@ -10,7 +10,7 @@ Moving Average Convergence / Divergence(MACD) Crossing trading
 ####################################################################
 ####################################################################
 
-Recommend Python 3.5 with libs：
+Recommend Python 3.5 + Pycharm with libs：
 
 pandas,
 numpy,
