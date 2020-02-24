@@ -1,5 +1,5 @@
 
-Backtest 3 strategy of trading:
+Backtest 3 strategies of trading:
 
 Moving Average(MA) Crossing trading
 
