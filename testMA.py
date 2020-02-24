@@ -10,14 +10,15 @@ import sma_crossover
 r = 0.04
 
 # Load the bar feed from the CSV file
-instrument="apple"
+instrument="google"
 feed = quandlfeed.Feed()
 # 调整需要的CSV路径 Adjust CSV file
-feed.addBarsFromCSV(instrument, r'E:\backtest\csv\applecsv.csv')
+feed.addBarsFromCSV(instrument, r'E:\backtest\csv\googlecsv.csv')
 
 # 修改长短期均线 Adjust fast and slow MA
 fastMA=5
 slowMA=20
+##line 55 调整存储图片路径 Change the root
 #========================================================================================
 # Evaluate the strategy with the feed's bars.
 myStrategy = sma_crossover.SMACrossOver(feed, instrument, fastMA,slowMA)
@@ -51,3 +52,5 @@ myStrategy.info("Total trading times: %.2f" % trades.getCount())
 #myStrategy.info(trades.getCommissionsForAllTrades())
 # Plot the strategy.
 plt.plot()
+# 保存图片，修改instrument前面项为你想要存储的根目录| Save image. Change the root before +instrument
+plt.savePlot('E:\\backtest\\csv\\'+instrument+'_'+'MA('+str(fastMA)+','+str(slowMA)+')'+'.png',200)

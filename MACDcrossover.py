@@ -7,15 +7,16 @@ import talib as ta
 # 无风险利率 set risk free rate
 r=0.04
 # 持有策略填写'Close' MACD策略填写'total' set holding stratagy as 'Close' or MACD strategy as 'total'
-adj='Close'
+adj='total'
 # Company Name
-instrument="apple"
+instrument="google"
 # Csv file
-df = pd.read_csv(r'E:\backtest\csv\applecsv.csv')
+df = pd.read_csv(r'E:\backtest\csv\googlecsv.csv')
 # MACD params
 fastperiod=12
 slowperiod=26
 signalperiod=9
+##line 93 调整存储图片路径 Change the root
 #========================================================================================
 # Get MACD from Talib
 df['macd'],df['macdsig'],df['macdhist']=ta.MACD(np.asarray(df.Close),fastperiod, slowperiod, signalperiod)
@@ -88,7 +89,10 @@ ax3.legend()
 # plot title
 
 plt.title(instrument)
+# 保存图片，修改instrument前面项为你想要存储的根目录| Save image. Change the root before +instrument
+plt.savefig('E:\\backtest\\csv\\'+instrument+'_'+'MACD('+str(fastperiod)+','+str(slowperiod)+','+str(signalperiod)+').png')
 plt.show()
+
 
 
 data = df
@@ -148,7 +152,7 @@ print('该策略的最大回撤为:', Max_re)
 print('The largest drawdown:', Max_re)
 ##print('该策略的最大回撤时间为:', Max_reDate)
 ##print('The largest drawdown time period:', Max_reDate)
-print('该策略的最大回撤时间为:', Re_date2.max())
+print('该策略的最长回撤时间为:', Re_date2.max())
 print('The largest drawdown time duration:', Re_date2.max())
 print('该策略的总交易次数为:', trade_time)
 print('Total trading times:', trade_time)
@@ -158,3 +162,4 @@ print('Total returns:',data.ix[len(data)-1,adj]/data.ix[0,adj])
 
 # 存储到csv | Save to csv
 #data.to_csv(r'C:\Users\MSI-PC\Desktop\bloomberg\csv\MACDapple.csv')
+

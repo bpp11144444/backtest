@@ -5,18 +5,20 @@ from pyalgotrade.stratanalyzer import sharpe
 from pyalgotrade.stratanalyzer import drawdown
 from pyalgotrade.stratanalyzer import trades
 import boolinger
-# 运行前先调整 adj instrument df | adjust params(adj,instrument,df) before running
+# 运行前先调整 r bBandsPeriod instrument feed | adjust params(r,bBandsPeriod,instrument,feed) before running
 # 无风险利率 risk free rate
 r = 0.04
 
 # Load the bar feed from the CSV file
-instrument="apple"
+instrument="google"
 feed = quandlfeed.Feed()
-feed.addBarsFromCSV(instrument, r'E:\backtest\csv\applecsv.csv')
+feed.addBarsFromCSV(instrument, r'E:\backtest\csv\googlecsv.csv')
+bBandsPeriod = 30
+##line 54 调整存储图片路径 Change the root
 #========================================================================================
 # Evaluate the strategy with the feed's bars.
 
-bBandsPeriod = 30
+
 myStrategy = boolinger.BBands(feed, instrument, bBandsPeriod)
 
 # Attach a returns analyzers to the strategy.
@@ -48,3 +50,6 @@ myStrategy.info("Total trading times: %.2f" % trades.getCount())
 
 # Plot the strategy.
 plt.plot()
+
+# 保存图片，修改instrument前面项为你想要存储的根目录| Save image. Change the root before +instrument
+plt.savePlot('E:\\backtest\\csv\\'+instrument+'_'+'BOOL('+str(bBandsPeriod)+')'+'.png',200)
