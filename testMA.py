@@ -39,7 +39,7 @@ plt = plotter.StrategyPlotter(myStrategy)
 plt.getInstrumentSubplot(instrument).addDataSeries("fastSMA", myStrategy.getshortSMA())
 plt.getInstrumentSubplot(instrument).addDataSeries("slowSMA", myStrategy.getlongSMA())
 # Plot the simple returns on each bar.
-#plt.getOrCreateSubplot("returns").addDataSeries("Simple returns", returnsAnalyzer.getReturns())
+# plt.getOrCreateSubplot("returns").addDataSeries("Simple returns", returnsAnalyzer.getReturns())
 
 
 # Run the strategy.
@@ -49,7 +49,7 @@ myStrategy.info("Sharpe ratio: %.2f" % sharpeRatioAnalyzer.getSharpeRatio(r))
 myStrategy.info("Max drawdown: %.2f" % drawdown.getMaxDrawDown())
 myStrategy.info(drawdown.getLongestDrawDownDuration())
 myStrategy.info("Total trading times: %.2f" % trades.getCount())
-#myStrategy.info(trades.getCommissionsForAllTrades())
+
 # Plot the strategy.
 plt.plot()
 # 保存图片，修改instrument前面项为你想要存储的根目录| Save image. Change the root before +instrument

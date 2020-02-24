@@ -7,7 +7,7 @@ import talib as ta
 # 无风险利率 set risk free rate
 r=0.04
 # 持有策略填写'Close' MACD策略填写'total' set holding stratagy as 'Close' or MACD strategy as 'total'
-adj='total'
+adj = 'total'
 # Company Name
 instrument="google"
 # Csv file
@@ -28,7 +28,7 @@ df.ix[0,'total']=start_amount
 # drop NaN
 df.dropna()
 # initial trading times
-trade_time=0
+trade_time = 0
 
 for i in range(1, len(df)):
         df.ix[i, 'shares']=df.ix[i-1,'shares']
@@ -100,19 +100,22 @@ data = df
 
 # 每日收益率 get daily return
 data['return']=(data[adj].shift(-1)-data[adj])/data[adj]
+
 # 每日超额收益率 get extra return
 data['exReturn']=data['return']-r/252
+
 # 获得夏普比率get sharpe ratio 15.8745=sqrt(252)
 sharperatio=15.8745*data['exReturn'].mean()/data['exReturn'].std()
 print('该策略的夏普率为： ', sharperatio)
 print('sharpe ratio： ', sharperatio)
 data[adj].plot()
+
 # 计算累积收益率 calculate Cumulative return cumret=(1+return).cumsum
 data['cumret']=np.cumprod(1+data['exReturn'])-1
 
 # initial
-Max_cumret=np.zeros(len(data))
-retracement=np.zeros(len(data))
+Max_cumret = np.zeros(len(data))
+retracement = np.zeros(len(data))
 Re_date=np.zeros(len(data))
 Re_date2=np.zeros(len(data))
 
@@ -144,14 +147,14 @@ for i in range (len(data)):
 
 
 
-retracement=np.nan_to_num(retracement)
-Max_re=retracement.max()
+retracement = np.nan_to_num(retracement)
+Max_re = retracement.max()
 # 计算最大回撤时间
 Max_reDate=Re_date.max()
 print('该策略的最大回撤为:', Max_re)
 print('The largest drawdown:', Max_re)
 ##print('该策略的最大回撤时间为:', Max_reDate)
-##print('The largest drawdown time period:', Max_reDate)
+##print('The deepest drawdown time period:', Max_reDate)
 print('该策略的最长回撤时间为:', Re_date2.max())
 print('The largest drawdown time duration:', Re_date2.max())
 print('该策略的总交易次数为:', trade_time)

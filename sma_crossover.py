@@ -45,23 +45,3 @@ class SMACrossOver(strategy.BacktestingStrategy):
 
             self.marketOrder(self.__instrument, -1*shares)
 
-
-
-
-
-
-        # If a position was not opened, check if we should enter a long position.
-        #if self.__position is None:
-
-
-            #if cross.cross_above(self.__shortsma, self.__longsma) > 0:
-             #   shares = int(self.getBroker().getCash() / bars[self.__instrument].getPrice())
-                # Enter a buy market order. The order is good till canceled.
-              #  self.__position = self.enterLong(self.__instrument, shares, True)
-            #elif cross.cross_above(self.__shortsma, self.__longsma) <= 0:
-               # sellshares = int(self.getBroker().getCash() / bars[self.__instrument].getPrice())
-                # Enter a buy market order. The order is good till canceled.
-             #   self.__position = self.enterShort(self.__instrument, shares, True)
-        # Check if we have to exit the position.
-        #elif not self.__position.exitActive() and cross.cross_above(self.__shortsma, self.__longsma) > 0:
-         #   self.__position.exitMarket()
