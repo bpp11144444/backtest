@@ -13,12 +13,12 @@ r = 0.04
 instrument="google"
 feed = quandlfeed.Feed()
 # 调整需要的CSV路径 Adjust CSV file
-feed.addBarsFromCSV(instrument, r'E:\backtest\csv\googlecsv.csv')
+feed.addBarsFromCSV(instrument, 'E:\\backtest\\csv\\'+instrument+'csv.csv')
 
 # 修改长短期均线 Adjust fast and slow MA
 fastMA=5
 slowMA=20
-##line 55 调整存储图片路径 Change the root
+##line 55 调整存储图片路径 Change the root of saving image
 #========================================================================================
 # Evaluate the strategy with the feed's bars.
 myStrategy = sma_crossover.SMACrossOver(feed, instrument, fastMA,slowMA)

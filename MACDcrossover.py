@@ -11,12 +11,12 @@ adj = 'total'
 # Company Name
 instrument="google"
 # Csv file
-df = pd.read_csv(r'E:\backtest\csv\googlecsv.csv')
+df = pd.read_csv('E:\\backtest\\csv\\'+instrument+'csv.csv')
 # MACD params
 fastperiod=12
 slowperiod=26
 signalperiod=9
-##line 93 调整存储图片路径 Change the root
+##line 93 调整存储图片路径 Change the root of saving image
 #========================================================================================
 # Get MACD from Talib
 df['macd'],df['macdsig'],df['macdhist']=ta.MACD(np.asarray(df.Close),fastperiod, slowperiod, signalperiod)
