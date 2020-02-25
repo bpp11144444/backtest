@@ -24,7 +24,8 @@ start_amount=1000000
 df['amount']=start_amount
 df['shares']=0
 df['total']=0
-df.ix[0,'total']=start_amount
+# 18 means 'total'
+df.ix[0,18]=start_amount
 # drop NaN
 df.dropna()
 # initial trading times
@@ -163,9 +164,13 @@ print('该策略的最长回撤时间为:', Re_date2.max())
 print('The largest drawdown time duration:', Re_date2.max())
 print('该策略的总交易次数为:', trade_time)
 print('Total trading times:', trade_time)
-print('最终收益率:',data.ix[len(data)-1,adj]/data.ix[0,adj])
-print('Total returns:',data.ix[len(data)-1,adj]/data.ix[0,adj])
-
+# 18 means 'total' ,4 means 'Close'
+if adj == 'total':
+    print('最终收益率:', data.iloc[len(data) - 1, 18] / data.iloc[0, 18])
+    print('Total returns:', data.iloc[len(data) - 1, 18] / data.iloc[0, 18])
+elif adj == 'Close':
+    print('最终收益率:', data.iloc[len(data) - 1, 4] / data.iloc[0, 4])
+    print('Total returns:', data.iloc[len(data) - 1, 4] / data.iloc[0, 4])
 
 # 存储到csv | Save to csv
 #data.to_csv(r'C:\Users\MSI-PC\Desktop\bloomberg\csv\MACDapple.csv')
