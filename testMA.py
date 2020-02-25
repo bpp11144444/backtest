@@ -10,7 +10,7 @@ import sma_crossover
 r = 0.04
 
 # Load the bar feed from the CSV file
-instrument="google"
+instrument="moutai"
 feed = quandlfeed.Feed()
 # 调整需要的CSV路径 Adjust CSV file
 feed.addBarsFromCSV(instrument, 'E:\\backtest\\csv\\'+instrument+'csv.csv')

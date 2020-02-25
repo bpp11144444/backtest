@@ -7,9 +7,9 @@ import talib as ta
 # 无风险利率 set risk free rate
 r=0.04
 # 持有策略填写'Close' MACD策略填写'total' set holding stratagy as 'Close' or MACD strategy as 'total'
-adj = 'total'
+adj = 'Close'
 # Company Name
-instrument="google"
+instrument="pingan"
 # Csv file
 df = pd.read_csv('E:\\backtest\\csv\\'+instrument+'csv.csv')
 # MACD params
@@ -153,14 +153,22 @@ Max_re = retracement.max()
 Max_reDate=Re_date.max()
 print('该策略的最大回撤为:', Max_re)
 print('The largest drawdown:', Max_re)
+
 ##print('该策略的最大回撤时间为:', Max_reDate)
-##print('The deepest drawdown time period:', Max_reDate)
+##print('The deepest drawdown duration:', Max_reDate)
+
 print('该策略的最长回撤时间为:', Re_date2.max())
 print('The largest drawdown time duration:', Re_date2.max())
-print('该策略的总交易次数为:', trade_time)
-print('Total trading times:', trade_time)
-print('最终收益率:',data.ix[len(data)-1,adj]/data.ix[0,adj])
-print('Total returns:',data.ix[len(data)-1,adj]/data.ix[0,adj])
+
+if adj == 'total':
+    print('该策略的总交易次数为:', trade_time)
+    print('Total trading times:', trade_time)
+elif adj == 'Close':
+    print('该策略的总交易次数为:', 1)
+    print('Total trading times:', 1)
+
+print('最终净值:',data.ix[len(data)-1,adj]/data.ix[0,adj])
+print('Total Net Value:',data.ix[len(data)-1,adj]/data.ix[0,adj])
 
 
 # 存储到csv | Save to csv

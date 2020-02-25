@@ -162,15 +162,18 @@ print('The largest drawdown:', Max_re)
 ##print('The deepest drawdown time period:', Max_reDate)
 print('该策略的最长回撤时间为:', Re_date2.max())
 print('The largest drawdown time duration:', Re_date2.max())
-print('该策略的总交易次数为:', trade_time)
-print('Total trading times:', trade_time)
+
 # 18 means 'total' ,4 means 'Close'
 if adj == 'total':
-    print('最终收益率:', data.iloc[len(data) - 1, 18] / data.iloc[0, 18])
-    print('Total returns:', data.iloc[len(data) - 1, 18] / data.iloc[0, 18])
+    print('该策略的总交易次数为:', trade_time)
+    print('Total trading times:', trade_time)
+    print('最终净值:', data.iloc[len(data) - 1, 18] / data.iloc[0, 18])
+    print('Total Net Value:', data.iloc[len(data) - 1, 18] / data.iloc[0, 18])
 elif adj == 'Close':
-    print('最终收益率:', data.iloc[len(data) - 1, 4] / data.iloc[0, 4])
-    print('Total returns:', data.iloc[len(data) - 1, 4] / data.iloc[0, 4])
+    print('该策略的总交易次数为:', 1)
+    print('Total trading times:', 1)
+    print('最终净值:', data.iloc[len(data) - 1, 4] / data.iloc[0, 4])
+    print('Total Net Value:', data.iloc[len(data) - 1, 4] / data.iloc[0, 4])
 
 # 存储到csv | Save to csv
 #data.to_csv(r'C:\Users\MSI-PC\Desktop\bloomberg\csv\MACDapple.csv')

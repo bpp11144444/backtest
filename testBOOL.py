@@ -10,7 +10,7 @@ import boolinger
 r = 0.04
 
 # Load the bar feed from the CSV file
-instrument="google"
+instrument="moutai"
 feed = quandlfeed.Feed()
 feed.addBarsFromCSV(instrument, 'E:\\backtest\\csv\\'+instrument+'csv.csv')
 bBandsPeriod = 30
